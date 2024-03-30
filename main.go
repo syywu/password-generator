@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"math/rand"
 	"os/exec"
@@ -9,10 +8,7 @@ import (
 )
 
 func main() {
-	password := generator()
-	fmt.Println(password)
-
-	cmd := exec.Command("./password.sh", password)
+	cmd := exec.Command("./password.sh", generator())
 	err := cmd.Run()
 	if err != nil {
 		log.Fatal(err)
