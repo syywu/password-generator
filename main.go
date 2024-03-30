@@ -1,13 +1,22 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"math/rand"
+	"os/exec"
 	"strings"
 )
 
 func main() {
-	log.Println("Your new generated password is:", generator())
+	password := generator()
+	fmt.Println(password)
+
+	cmd := exec.Command("./password.sh", password)
+	err := cmd.Run()
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func generator() string {
